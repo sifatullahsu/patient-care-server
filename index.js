@@ -61,7 +61,10 @@ const run = async () => {
         patient = await patientCollection.findOne(query);
       }
 
-      const result = patient ? patient : {
+      const result = patient ? {
+        status: true,
+        data: patient
+      } : {
         status: false,
         message: 'Data not found.'
       }
