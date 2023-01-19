@@ -102,16 +102,15 @@ const run = async () => {
         response = await patientCollection.updateOne(query, updatedDoc);
       }
 
-
-      const result = response?.modifiedCount > 0 ? {
+      const result = response?.acknowledged ? {
         status: true,
         message: 'Update successful.'
       } : {
         status: false,
-        message: 'Update unsuccessful.'
+        message: 'Invalid id.'
       }
 
-      res.send(response);
+      res.send(result);
     });
 
 
